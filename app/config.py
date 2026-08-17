@@ -7,6 +7,10 @@ class Settings(BaseSettings):
     DEBUG: bool
     HOST: str
     PORT: int
+    CHUNK_SIZE: int
+    CHUNK_OVERLAP: int
+
+
 
     class Config:
         env_file = ".env"

@@ -1,0 +1,19 @@
+Artificial Intelligence Practice Document
+
+Artificial Intelligence (AI) enables computers to perform tasks that usually require human intelligence.
+Machine Learning (ML) is a subset of AI that learns patterns from data.
+Deep Learning (DL) is a subset of ML that uses neural networks with many layers.
+
+Common AI applications:
+- Chatbots
+- Recommendation systems
+- Image classification
+- Speech recognition
+- Document Question Answering (RAG)
+
+LangChain is a framework for building LLM-powered applications.
+A document loader reads data from files such as PDF, TXT, DOCX, and CSV.
+After loading, documents are usually split into chunks, converted into embeddings,
+stored in a vector database, and retrieved during question answering.
+
+This file is intended for practicing LangChain document loaders.
