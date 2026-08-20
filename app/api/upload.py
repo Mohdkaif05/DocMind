@@ -5,6 +5,7 @@ from fastapi import APIRouter, File, HTTPException, UploadFile
 
 from app.services.ingestion_service import IngestionService
 from app.chunking.recursive_chunker import TextChunker
+from app.services.embedding_service import EmbeddingService
 
 
 router = APIRouter(
@@ -53,7 +54,21 @@ async def upload_document(
             chunks
         )
 
-        # 5. Create preview of first 3 chunks
+        # 5. Generate embeddings
+        embedding_service = EmbeddingService()
+
+        embeddings = embedding_service.embed_chunks(
+            chunks
+        )
+
+        # 6. Get embedding dimension
+        embedding_dimension = (
+            len(embeddings[0])
+            if embeddings
+            else 0
+        )
+
+        # 7. Preview first 3 chunks
         chunk_preview = [
             {
                 "chunk_index": chunk.metadata.get(
@@ -75,6 +90,8 @@ async def upload_document(
             "documents_loaded": len(documents),
             "chunks_created": len(chunks),
             "chunk_statistics": chunk_statistics,
+            "embeddings_created": len(embeddings),
+            "embedding_dimension": embedding_dimension,
             "chunk_preview": chunk_preview
         }
 

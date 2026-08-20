@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     PORT: int
     CHUNK_SIZE: int
     CHUNK_OVERLAP: int
+    GEMINI_API_KEY: str
 
 
 
